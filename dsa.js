@@ -16,111 +16,111 @@
 // for (let x = 0; x < word.length; x++) {
   
 
-// let myStack = () => {
-//     this.count = 0
-//     this.storage = {}
+function myStack() {
+    this.count = 0
+    this.storage = {}
 
-//     this.push = (value) => {
-//         this.storage[this.count] = value
+    this.push = (value) => {
+        this.storage[this.count] = value
 
-//         this.count++
-//     }
+        this.count++
+    }
 
-//     this.pop = () => {
-//         if(this.count === 0){
-//             return undefined
-//         }
+    this.pop = () => {
+        if(this.count === 0){
+            return undefined
+        }
         
-//         this.count--
-//         let itemRemoved = this.storage[this.count]
-//         delete this.storage[this.count]
-//         return itemRemoved
-//     }
+        this.count--
+        let itemRemoved = this.storage[this.count]
+        delete this.storage[this.count]
+        return itemRemoved
+    }
 
-//     this.peek = () => {
-//         if(this.count === 0){
-//             return undefined
-//         }
+    this.peek = () => {
+        if(this.count === 0){
+            return undefined
+        }
 
-//         let result = this.storage[this.count--]
-//         return result
-//     }
+        let result = this.storage[this.count--]
+        return result
+    }
 
-//     this.length = () => {
-//         return this.count
-//     }
-// }
+    this.length = () => {
+        return this.count
+    }
+}
 
 
 // Set
 // ======== : has, add, remove, union, interset, differnce
 
-// function mySet() {
-//     this.size = 0
-//     this.collection = []
+function mySet() {
+    this.size = 0
+    this.collection = []
 
-//     this.has = (item) => {
-//         return this.collection.includes(item)
-//     }
+    this.has = (item) => {
+        return this.collection.includes(item)
+    }
 
-//     this.add = (item) => {
-//         if(!this.has(item)){
-//             this.collection.push(item)
-//             return true
-//         }else{
-//             return false
-//         }
-//     }
+    this.add = (item) => {
+        if(!this.has(item)){
+            this.collection.push(item)
+            return true
+        }else{
+            return false
+        }
+    }
 
-//     this.remove = (item) => {
-//         if(this.has(item)){
-//             let idx = collection.indexOf(item)
-//             collection.splice(idx, 1)
-//             return true
-//         }else{
-//             return false
-//         }
-//     }
+    this.remove = (item) => {
+        if(this.has(item)){
+            let idx = collection.indexOf(item)
+            collection.splice(idx, 1)
+            return true
+        }else{
+            return false
+        }
+    }
 
-//     this.values = () => {
-//         return this.collection
-//     }
+    this.values = () => {
+        return this.collection
+    }
 
-//     this.union = (otherSet) => {
-//         let unionSet = new mySet()
-//         let firstSet = this.values()
-//         let secondSet = otherSet.values()
-//         firstSet.forEach(element => {
-//             unionSet.add(element)   
-//         })
-//         secondSet.forEach(element => {
-//             unionSet.add(element)
-//         })
+    this.union = (otherSet) => {
+        let unionSet = new mySet()
+        let firstSet = this.values()
+        let secondSet = otherSet.values()
+        firstSet.forEach(element => {
+            unionSet.add(element)   
+        })
+        secondSet.forEach(element => {
+            unionSet.add(element)
+        })
 
-//         return unionSet
-//     }
+        return unionSet
+    }
 
-//     this.intersection = (otherSet) => {
-//         let intersectionSet = new mySet()        
-//         firstSet = this.values()
-//         secondSet = otherSet
-//         firstSet.forEach(item => {
-//             if(secondSet.has(item)){
-//                 intersectionSet.add(item)
-//             }
-//         })
+    this.intersection = (otherSet) => {
+        let intersectionSet = new mySet()        
+        firstSet = this.values()
+        secondSet = otherSet
+        firstSet.forEach(item => {
+            if(secondSet.has(item)){
+                intersectionSet.add(item)
+            }
+        })
 
-//         return intersectionSet
-//     }
+        return intersectionSet
+    }
 
-//     this.subset = (otherSet) => {
-//         let firstSet = this
-//         let secondSet = otherSet.values()
-//         return secondSet.every(item => {
-//             return firstSet.has(item)
-//         })
-//     }
-// }
+    this.subset = (otherSet) => {
+        let firstSet = this
+        let secondSet = otherSet.values()
+        return secondSet.every(item => {
+            return firstSet.has(item)
+        })
+    }
+}
 
 // let bookSet = new mySet()
 // let bookSetB = new mySet()
@@ -191,31 +191,31 @@ function Queue() {
 // queue.print()
 
 // Priority Queue===============================
-// function PriorityQueue() {
-//     Queue.call(this)
-//     collection = []
+function PriorityQueue() {
+    Queue.call(this)
+    collection = []
 
-//     this.enqueue = (item) =>{
-//         let added = false
-//         // console.log("here")
-//         if(this.isEmpty()){
-//             console.log("empty")
-//             collection.push(item)
-//         }else{
-//             for (let x = 0; x < collection.length; x++) {
-//                 if(item[1] < collection[x][1]){
-//                     collection.splice(x, 0, item)
-//                     added = true
-//                     break
-//                 }
-//             }
-//             if(!added){
-//                 console.log("!added")
-//                 collection.push(item)
-//             }
-//         }
-//     }
-// }
+    this.enqueue = (item) =>{
+        let added = false
+        // console.log("here")
+        if(this.isEmpty()){
+            console.log("empty")
+            collection.push(item)
+        }else{
+            for (let x = 0; x < collection.length; x++) {
+                if(item[1] < collection[x][1]){
+                    collection.splice(x, 0, item)
+                    added = true
+                    break
+                }
+            }
+            if(!added){
+                console.log("!added")
+                collection.push(item)
+            }
+        }
+    }
+}
 
 // let pq = new PriorityQueue()
 // pq.enqueue(['sola', 3])
@@ -357,21 +357,123 @@ class BST {
         }
         this.root = removeNode(this.root, data)
     }
+
+    isBalanced() {
+        return ((this.findMaxHeight() - this.findMinHeight()) <= 1)
+    }
+
+    findMinHeight(node = this.root){
+        if(node == null)
+            return -1
+
+        let left = this.findMinHeight(node.left)
+       
+        let right = this.findMinHeight(node.right)
+        
+        if(left < right)
+            return left + 1
+        else
+            return right + 1
+    }
+
+    findMaxHeight(node = this.root){
+        if(node == null)
+            return -1
+
+        let left = this.findMaxHeight(node.left)
+        let right = this.findMaxHeight(node.right)
+
+        if(left > right)
+            return left + 1
+        else
+            return right + 1
+    }
+
+    inOrder(){
+        if(this.root == null){
+            return null
+        }else{
+            let result = []
+            function traverseInOrder(node){
+                node.left && traverseInOrder(node.left)
+                result.push(node.data)
+                node.right && traverseInOrder(node.right)
+            }
+            traverseInOrder(this.root)
+            return result
+        }
+    }
+
+    preOrder(){
+        if(this.root == null){
+            return null
+        }else{
+            let result = []
+            function traversePreOrder(node){
+                result.push(node.data)
+                node.left && traversePreOrder(node.left)
+                node.right && traversePreOrder(node.right)
+            }
+            traversePreOrder(this.root)
+            return result
+        }
+    }
+    
+    postOrder(){
+        if(this.root == null){
+            return null
+        }else{
+            let result = []
+            function traversePostOrder(node){
+                node.left && traversePostOrder(node.left)
+                node.right && traversePostOrder(node.right)
+                result.push(node.data)
+            }
+            traversePostOrder(this.root)
+            return result
+        }
+    }
+
+    levelOrder(){
+        let Q = []
+        let result = []
+        if(this.root != null){
+            Q.push(this.root)
+            while(Q.length > 0){
+                let node = Q.shift()
+                result.push(node.data)
+                node.left && Q.push(node.left)
+                node.right && Q.push(node.right)
+            }
+            return result
+        }else{
+            return null
+        }
+    }
 }
 
-let bst = new BST()
-bst.add(3)
-bst.add(6)
-bst.add(4)
-bst.add(9)
-bst.add(2)
-bst.add(10)
-bst.add(5)
-bst.add(20)
-console.log(bst.findMax())
-console.log(bst.findMin())
-console.log(bst.isPresent(20))
-bst.remove(20)
-console.log(bst.findMax())
-console.log(bst.isPresent(20))
-console.log(bst)
+// let bst = new BST()
+// bst.add(9)
+// bst.add(4)
+// bst.add(17)
+// bst.add(3)
+// bst.add(6)
+// bst.add(22)
+// bst.add(5)
+// bst.add(7)
+// bst.add(20)
+// bst.add(10)
+// console.log(bst.findMax())
+// console.log(bst.findMin())
+// console.log(bst.isPresent(20))
+// bst.remove(20)
+// console.log(bst.findMax())
+// console.log(bst.isPresent(20))
+// console.log(bst)
+// console.log(bst.findMinHeight())
+// console.log(bst.findMaxHeight())
+// console.log(bst.isBalanced())
+// console.log('InOrder =>' +bst.inOrder())
+// console.log('PreOrder => '+bst.preOrder())
+// console.log('PostOrder =>'+bst.postOrder())
+// console.log('levelOrder => '+bst.levelOrder())
