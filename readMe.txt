@@ -1,0 +1,1 @@
+This project contains in one file, the implementation of all data structures and algorithmic problems
