@@ -477,3 +477,191 @@ class BST {
 // console.log('PreOrder => '+bst.preOrder())
 // console.log('PostOrder =>'+bst.postOrder())
 // console.log('levelOrder => '+bst.levelOrder())
+
+// Hash Table
+let hashFn = (string, max) => {
+    let hash = 0
+    for (let i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max
+}
+
+let HashTable = function(){
+
+    let storage = []
+    const storageLimit = 4
+
+    this.add = function(key, value){
+        let index = hashFn(key, storageLimit)
+        if (storage[index] === undefined){
+            storage[index] = [[key, value]]
+        }else{
+            let inserted = false
+            for (let x = 0; x < storage[index].length; x++) {
+                if(storage[index][x][0] === key)                {
+                    storage[index][x][1]
+                    inserted = true
+                }
+            }
+            if(inserted === false){
+                storage[index].push([key, value])
+            }
+        }
+    }
+
+    this.remove = function(key){
+        let index = hashFn(key, storageLimit)
+        if(storage[index].length === 1 && storage[index][0][0] === key){
+            delete storage[index]
+        }else{
+            for (let y = 0; y < storage[index].length; y++) {
+                if (storage[index][y][0] === key){
+                    delete storage[index][y]
+                }
+                
+            }
+        }
+    }
+
+    this.lookup = function(key){
+        let index = hashFn(key, storageLimit)
+        if(storage[index] === undefined){
+            return undefined
+        }else{
+            for (let z = 0; z < storage[index].length; z++) {
+                if(storage[index][z][0] === key){
+                    return storage[index][z][0]
+                }
+                
+            }
+        }
+    }
+
+    this.print = function(){
+        console.log(storage)
+    }
+}
+
+// // 
+// console.log(hashFn('damil', 10))
+
+// let ht = new HashTable()
+// ht.add('dami', 'person')
+// ht.add('beast', 'dog')
+// ht.add('eazy', 'brother')
+// ht.print()
+
+
+function LinkedList() {
+    let length = 0
+    let head = null
+
+    let Node = function(element){
+        this.element = element
+        this.next = null
+    }
+
+    this.size = function(){
+        return length
+    }
+
+    this.head = function(){
+        return head
+    }
+
+    this.add = function(element){
+        let node = Node(element)
+        if(head === null){
+            head = node
+        }else{
+            currentNode = head
+            while(currentNode.next){
+                currentNode = currentNode.next
+            }
+
+            currentNode.next = node
+        }
+        length++
+    }
+
+    this.remove = function(element){
+        let currentNode = head
+        let previousNode
+        if(currentNode.element === element){
+            head = currentNode.next
+        }else{
+            while(currentNode.element !== element){
+                previousNode = currentNode
+                currentNode = currentNode.next
+            }
+            if(currentNode.element === element){
+                previousNode.next = currentNode.next
+                length--
+            }else{
+                return "Element cannot be found"
+            }
+        }
+    }
+
+    this.isEmpty = function(){
+        return length === 0
+    }
+
+    this.indexOf = function(element){
+        let currentNode = head
+        let index = -1
+
+        while(currentNode){
+            index++
+            if(currentNode.element === element){
+                return index
+            }else{
+                currentNode = currentNode.next
+            }
+
+            if(currentNode.next === null)
+                return "Index not found"
+        }
+    }
+
+    this.elementAt = function(index){
+        let currentNode = head
+        let count = 0;
+        while(count < index){
+            count ++
+            currentNode = currentNode.next
+        }
+        return currentNode.element
+    }
+
+    this.addAt = function(index, element){
+        let node = Node(element)
+
+        let currentNode = head
+        let currentIndex = 0
+        let previousNode
+
+        if(index > length){
+            return "Index not within context"
+        }
+
+        if(index === currentIndex){
+            node.next = currentNode
+            node = head
+        }else{
+            while (currentIndex < index){
+                previousNode = currentNode
+                currentNode = currentNode.next
+                currentIndex++
+            }
+            node.next =  currentNode
+            previousNode.next = node
+        }
+        length++
+    }
+
+    this.removeAt = function(){
+        
+    }
+}
